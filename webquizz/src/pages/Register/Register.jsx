@@ -1,6 +1,6 @@
 import { useAuthentication } from "../../hooks/useAuthentication";
 import styles from "./Register.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export const Register = () => {
@@ -30,13 +30,22 @@ export const Register = () => {
         return
       }
       const init = await createUser(user)
+
       console.log(user)
+      console.log(init)
 
     } catch (error) {
       console.log(error)
       setError("Ocorreu um erro durante o cadastro.");
-    }
+    } 
   }
+
+  useEffect(() => {
+    if (authError) {
+      setError(authError);
+    }
+  }, [authError]);
+
 
   return (
     <>
@@ -92,9 +101,12 @@ export const Register = () => {
           />
         </label>
 
-        <button className="btn">Cadastrar</button>
-       {/*{!loading && <button className="btn">Cadastrar</button>}
-        {loading && <button className="btn" disabled>Enviando...</button>}*/} 
+       {!loading && <button className="btn">Entrar</button>}
+        {loading && (
+          <button className="btn" disabled>
+            Aguarde...
+          </button>
+        )}
         {error && <p className="error">{error}</p>}
       </form>
     </div>
