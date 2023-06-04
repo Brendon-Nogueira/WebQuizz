@@ -1,34 +1,36 @@
+import { useAuthentication } from "../../hooks/useAuthentication";
 import styles from "./Register.module.css";
 import { useState } from "react";
-import { useAuthentication } from "../../hooks/useAuthentication";
+
 
 export const Register = () => {
+
   const [displayName, setDisplayName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmedPassword, setConfirmedPassword] = useState("")
   const [error, setError] = useState("")
 
-  const { createUsers, error: authError, loading } = useAuthentication()
+  const {createUser, error : authError, loading } = useAuthentication()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
 
-    if (password !== confirmedPassword) {
-      setError("As senhas precisam ser iguais.");
-      return;
-    }
-
     try {
+
       const user = {
         displayName,
         email,
         password,
       }
-
-      const init = await createUsers(user);
-      console.log(init)
+  
+      if (password !== confirmedPassword) {
+        setError("As senhas precisam ser iguais.");
+        return
+      }
+      const init = await createUser(user)
+      console.log(user)
 
     } catch (error) {
       console.log(error)
@@ -37,7 +39,8 @@ export const Register = () => {
   }
 
   return (
-    <div className={styles.register}>
+    <>
+     <div className={styles.register}>
       <h1>Cadastre-se</h1>
       <p>E teste seus conhecimentos!</p>
       <form onSubmit={handleSubmit}>
@@ -90,10 +93,12 @@ export const Register = () => {
         </label>
 
         <button className="btn">Cadastrar</button>
-        {!loading && <button className="btn">Cadastrar</button>}
-        {loading && <button className="btn" disabled>Enviando...</button>}
+       {/*{!loading && <button className="btn">Cadastrar</button>}
+        {loading && <button className="btn" disabled>Enviando...</button>}*/} 
         {error && <p className="error">{error}</p>}
       </form>
     </div>
+    </>
+   
   );
 };
