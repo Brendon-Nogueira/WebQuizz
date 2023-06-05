@@ -1,0 +1,13 @@
+.posts {
+    text-align: center;
+}
+
+.posts h2 {
+    font-size: 1.2em;
+}
+
+.posts p {
+    color: #49274A;
+    margin-bottom: 2em;
+    
+}

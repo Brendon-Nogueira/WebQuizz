@@ -42,9 +42,9 @@ export const Register = () => {
 
   useEffect(() => {
     if (authError) {
-      setError(authError);
+      setError(authError)
     }
-  }, [authError]);
+  }, [authError])
 
 
   return (
@@ -101,7 +101,7 @@ export const Register = () => {
           />
         </label>
 
-       {!loading && <button className="btn">Entrar</button>}
+       {!loading && <button className="btn">Cadastrar</button>}
         {loading && (
           <button className="btn" disabled>
             Aguarde...
