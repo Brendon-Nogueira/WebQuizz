@@ -41,6 +41,10 @@ export const Navbar = () => {
                 <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : "")}> Dashboard </NavLink>
         </li>
 
+        <li>
+                <NavLink to="/welcome" className={({ isActive }) => (isActive ? styles.active : "")}> Welcome </NavLink>
+        </li>
+
         </>
             )}
 

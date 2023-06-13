@@ -3,8 +3,11 @@ import styles from '../Dashboard/Dashobard.module.css'
 
 
  export const Dashboard = () => {
-  const handleCardClick = (quizType) => {
-    console.log(`Clicou no card ${quizType}`)
+  
+
+  const handleCardClick = (e) => {
+    e.preventDefault()
+
   }
 
   return (

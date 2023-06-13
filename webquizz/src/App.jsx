@@ -17,7 +17,7 @@ import { Dashboard } from './pages/Dashboard/Dashboard'
 import { Navbar } from './components/Navbar/Navbar'
 import {Footer} from './components/Footer/Footer'
 import { Search } from './pages/Search/Search'
-
+import { Welcome } from './components/Welcome/Welcome'
 //hooks
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
@@ -27,7 +27,9 @@ import { AuthProvider } from './context/AuthContext'
 
 
 
+
 function App() {
+
 
   const { auth } = useAuthentication();
   const [user, loadingUser] = useLoadUser(auth)
@@ -35,7 +37,6 @@ function App() {
   if (loadingUser) {
     return <p>Loading...</p>
   }
-
 
   return (
     <div className="App">
@@ -51,6 +52,7 @@ function App() {
               <Route path="/search" element={<Search />}/>
               <Route path="/posts/create" element={user ? <CreatePost/> : <Navigate to="/login" />}/>
               <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to="/login" />} />
+              <Route path="/welcome" element={user ? <Welcome/> : <Navigate to="/login" />} />
             </Routes>
           </div>
           <Footer />
@@ -61,4 +63,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

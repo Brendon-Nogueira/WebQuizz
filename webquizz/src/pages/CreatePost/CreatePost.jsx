@@ -3,38 +3,38 @@ import styles from './CreatePost.module.css'
 import { useState } from 'react'
 import { useInsertDocument } from '../../hooks/useInsertDocuments'
 import { useNavigate } from 'react-router-dom'
-import { useAuthValue } from '../../context/AuthContext';
+import { useAuthValue } from '../../context/AuthContext'
 
  export const CreatePost = () => {
-  const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
-  const [body, setBody] = useState("");
-  const [tags, setTags] = useState([]);
-  const [formError, setFormError] = useState("");
+  const [title, setTitle] = useState('')
+  const [image, setImage] = useState('')
+  const [body, setBody] = useState('')
+  const [tags, setTags] = useState([])
+  const [formError, setFormError] = useState('')
 
-  const { user } = useAuthValue();
+  const { user } = useAuthValue()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { insertDocument, response } = useInsertDocument("posts");
+  const { insertDocument, response } = useInsertDocument('posts')
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormError("");
+    e.preventDefault()
+    setFormError('')
 
     // validação
     try {
-      new URL(image);
+      new URL(image)
     } catch (error) {
-      setFormError("A imagem precisa ser uma URL.");
+      setFormError("A imagem precisa ser uma URL.")
     }
 
     // cria as tags 
-    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase())
 
     // verifica os valores
     if (!title || !image || !tags || !body) {
-      setFormError("Por favor, preencha todos os campos!");
+      setFormError("Por favor, preencha todos os campos!")
     }
 
     console.log(tagsArray);
@@ -60,7 +60,7 @@ import { useAuthValue } from '../../context/AuthContext';
     });
 
     // redirecionar
-    navigate("/");
+    navigate("/")
   };
 
   return (
