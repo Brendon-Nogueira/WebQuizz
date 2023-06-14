@@ -1,5 +1,5 @@
 //data
-import questions from '../data/questions'
+import {questions} from '../data/questions'
 // hooks
 import { createContext, useReducer} from "react"
 
@@ -15,9 +15,13 @@ const init = {
 
 const quizzReducer = (state, action) =>{
 
+    console.log(state, action)
     switch(action.type){
       case 'CHANGE_STATE' :
-        return state
+            
+        return {
+            gameState: states[1]
+        }
 
         default: 
             return state
@@ -29,3 +33,4 @@ export const QuizzProvider = ({children}) =>{
     const value = useReducer(quizzReducer, init)
     return <QuizzContext.Provider value={value}>{children}</QuizzContext.Provider>
 }
+

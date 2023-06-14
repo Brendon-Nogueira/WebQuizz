@@ -12,21 +12,24 @@ import { Login } from './pages/Login/Login'
 import { Register } from './pages/Register/Register'
 import { CreatePost } from './pages/CreatePost/CreatePost'
 import { Dashboard } from './pages/Dashboard/Dashboard'
+import { Search } from './pages/Search/Search'
 
 // components for aplication
 import { Navbar } from './components/Navbar/Navbar'
 import {Footer} from './components/Footer/Footer'
-import { Search } from './pages/Search/Search'
 import { Welcome } from './components/Welcome/Welcome'
+import { Questions} from './components/Questions/Questions'
 
 //hooks
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthentication } from './hooks/useAuthentication'
 import {useLoadUser} from './hooks/useLoadUser'
+import { useContext } from 'react'
 
 //context
 import { AuthProvider } from './context/AuthContext'
-import { QuizzProvider } from './context/QuizzContext'
+
+import { QuizzContext } from './context/QuizzContext'
 
 
 
@@ -34,6 +37,7 @@ function App() {
 
   const { auth } = useAuthentication();
   const [user, loadingUser] = useLoadUser(auth)
+  const [quizzState, dispatch] = useContext(QuizzContext)
 
   if (loadingUser) {
     return <p>Loading...</p>
@@ -41,8 +45,7 @@ function App() {
 
   return (
     <div className="App">
-      <AuthProvider value={{user}}>
-        <QuizzProvider>
+      <AuthProvider value={{user}}>  
         <BrowserRouter>
           <Navbar />
           <div className="container">
@@ -56,10 +59,13 @@ function App() {
               <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to="/login" />} />
               <Route path="/welcome" element={user ? <Welcome/> : <Navigate to="/login" />} />
             </Routes>
+
+            {quizzState.gameStage === 'Start' && <Welcome/>}
+            {quizzState.gameStage === 'Playing' && <Questions/>}
+            {quizzState.gameStage === 'End' && <Finish/>}
           </div>
           <Footer />
-        </BrowserRouter>
-        </QuizzProvider>
+        </BrowserRouter>  
       </AuthProvider>
 
     </div>

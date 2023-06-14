@@ -1,4 +1,4 @@
-export const data = [
+export const questions = [
   {
     question: "O que é Vanilla JavaScript?",
     options: [
