@@ -10,22 +10,66 @@ const states = [ 'Start', 'Playing', 'End']
 
 const init = {
     gameState: states[0],
-    questions
+    questions,
+    currentQuest: 0,
+    score: 0,
+    answerSelected: false
 }
 
 const quizzReducer = (state, action) =>{
 
-    console.log(state, action)
-    switch(action.type){
-      case 'CHANGE_STATE' :
-            
-        return {
-            ...state,
-            gameState: states[1]
-        }
+    switch (action.type) {
+        case "CHANGE_STATE":
+            return {
+                ...state,
+                gameState: states[1]
+            }
 
-        default: 
-            return state
+        case "REORDER_QUESTIONS":
+            const reorderQuestions = questions.sort(() => {
+                return Math.random() - 0.5
+            })
+            return {
+                ...state,
+                questions: reorderQuestions
+            }
+
+        case "CHANGE_QUESTION":
+            const nextQuestion = state.currentQuest++
+            let endGame = false
+
+            if (!questions[nextQuestion]) {
+                endGame = true
+            }
+
+            return {
+                ...state,
+                currentQuest: nextQuestion,
+                gameState: endGame ? states[2] : state.gameState,
+                answerSelected: false
+            }
+
+        case "CHECK_ANSWER":
+            if(state.answerSelected) return state
+
+            const answer = action.payload.answer
+            const option = action.payload.option
+            let correctAnswer = 0
+
+            if(answer === option) {correctAnswer = 1}
+
+            return {
+                ...state,
+                score: state.score + correctAnswer,
+                answerSelected: option
+            }
+
+
+        case "MENU":
+            return initialState
+
+        default:
+            return state;
     }
 }
 
