@@ -19,6 +19,7 @@ import { Navbar } from './components/Navbar/Navbar'
 import {Footer} from './components/Footer/Footer'
 import { Welcome } from './components/Welcome/Welcome'
 import { Questions} from './components/Questions/Questions'
+import { Finish } from './components/Finish/Finish'
 
 //hooks
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
@@ -58,12 +59,15 @@ function App() {
               <Route path="/posts/create" element={user ? <CreatePost/> : <Navigate to="/login" />}/>
               <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to="/login" />} />
               <Route path="/welcome" element={user ? <Welcome/> : <Navigate to="/login" />} />
-              <Route path="/questions" element={user ? <Questions/> : <Navigate to="/login" />} />    
+              <Route path="/questions" element={user ? <Questions/> : <Navigate to="/login" />}/>
+              <Route path="/finish" element={user ? <Finish/> : <Navigate to="/login" />} />
+    
             </Routes>
 
-              {quizzState.gameState === 'Start' && <Welcome/>}
-              {quizzState.gameState === 'Playing' && <Questions/>}
-              {quizzState.gameState === 'End' && <Finish/>}
+            {quizzState.gameState === 'Start' && <Welcome/>}
+            {quizzState.gameState === 'Playing' && <Questions/>}
+            {quizzState.gameState === 'End' && <Finish/>}
+            
           </div>
           <Footer />
         </BrowserRouter>  
