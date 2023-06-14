@@ -20,6 +20,7 @@ const quizzReducer = (state, action) =>{
       case 'CHANGE_STATE' :
             
         return {
+            ...state,
             gameState: states[1]
         }
 
