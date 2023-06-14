@@ -58,12 +58,13 @@ function App() {
               <Route path="/posts/create" element={user ? <CreatePost/> : <Navigate to="/login" />}/>
               <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to="/login" />} />
               <Route path="/welcome" element={user ? <Welcome/> : <Navigate to="/login" />} />
+              <Route path="/questions" element={user ? <Welcome/> : <Navigate to="/login" />} />
             
             </Routes>
 
-            {quizzState.gameStage === 'Start' && <Welcome/>}
-            {quizzState.gameStage === 'Playing' && <Questions/>}
-            {quizzState.gameStage === 'End' && <Finish/>}
+            {quizzState.gameState === 'Start' && <Welcome/>}
+            {quizzState.gameState === 'Playing' && <Questions/>}
+            {quizzState.gameState === 'End' && <Finish/>}
           </div>
           <Footer />
         </BrowserRouter>  
