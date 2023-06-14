@@ -1,11 +1,23 @@
-import styles from '../Welcome/Welcome.module.css'
- export const Welcome = () => {
-  return (
-    <div className={styles.welcome}>
-        <h2 className={styles.title}>WebQuizz</h2>
-        <p className={styles.paragraph}>Clique para começar!!</p>
+import  '../Welcome/Welcome.css'
 
-        <button className={styles.btn_play}>Jogar</button>
+//hooks 
+import { useContext } from 'react'
+import { QuizzContext } from '../../context/QuizzContext'
+
+
+
+ export const Welcome = () => {
+
+ const [quizzState, dispatch] = useContext(QuizzContext)
+
+ console.log(quizzState)
+
+  return (
+    <div id="welcome">
+        <h2>WebQuizz</h2>
+        <p>Clique para começar!!</p>
+
+        <button id="btn_play" onClick={()=> dispatch( { type: 'CHANGE_STATE' })}>Jogar</button>
     </div>
   )
 }

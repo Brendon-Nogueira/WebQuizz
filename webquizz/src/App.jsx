@@ -18,18 +18,19 @@ import { Navbar } from './components/Navbar/Navbar'
 import {Footer} from './components/Footer/Footer'
 import { Search } from './pages/Search/Search'
 import { Welcome } from './components/Welcome/Welcome'
-//hooks
 
+//hooks
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthentication } from './hooks/useAuthentication'
 import {useLoadUser} from './hooks/useLoadUser'
-import { AuthProvider } from './context/AuthContext'
 
+//context
+import { AuthProvider } from './context/AuthContext'
+import { QuizzProvider } from './context/QuizzContext'
 
 
 
 function App() {
-
 
   const { auth } = useAuthentication();
   const [user, loadingUser] = useLoadUser(auth)
@@ -41,6 +42,7 @@ function App() {
   return (
     <div className="App">
       <AuthProvider value={{user}}>
+        <QuizzProvider>
         <BrowserRouter>
           <Navbar />
           <div className="container">
@@ -57,6 +59,7 @@ function App() {
           </div>
           <Footer />
         </BrowserRouter>
+        </QuizzProvider>
       </AuthProvider>
 
     </div>
