@@ -3,6 +3,7 @@ import styles from '../Welcome/Welcome.module.css'
 //hooks 
 import { useContext } from 'react'
 import { QuizzContext } from '../../context/QuizzContext'
+import { Navigate } from 'react-router-dom'
 
 
 
@@ -17,7 +18,10 @@ import { QuizzContext } from '../../context/QuizzContext'
         <h2>WebQuizz</h2>
         <p>Clique para começar!!</p>
 
-        <button className={styles.btn_play} onClick={() => dispatch({type: "CHANGE_STATE"})}>Jogar</button>
+        <button className={styles.btn_play} onClick={() => {
+          dispatch({type: "CHANGE_STATE"}) 
+          
+          }} >Jogar</button>
     </div>
   )
 }

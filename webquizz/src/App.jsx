@@ -25,7 +25,7 @@ import { Finish } from './components/Finish/Finish'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthentication } from './hooks/useAuthentication'
 import {useLoadUser} from './hooks/useLoadUser'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 //context
 import { AuthProvider } from './context/AuthContext'
@@ -40,9 +40,15 @@ function App() {
   const [user, loadingUser] = useLoadUser(auth)
   const [quizzState, dispatch] = useContext(QuizzContext)
 
+  useEffect(() => {
+    dispatch({type: "REORDER_QUESTIONS"})
+  }, [])
+  
   if (loadingUser) {
     return <p>Loading...</p>
   }
+
+
 
   return (
     <div className="App">
@@ -64,9 +70,9 @@ function App() {
     
             </Routes>
 
-            {quizzState.gameState === 'Start' && <Welcome/>}
+            {/*{quizzState.gameState === 'Start' && <Welcome/>}
             {quizzState.gameState === 'Playing' && <Questions/>}
-            {quizzState.gameState === 'End' && <Finish/>}
+            {quizzState.gameState === 'End' && <Finish/>} */}
             
           </div>
           <Footer />
