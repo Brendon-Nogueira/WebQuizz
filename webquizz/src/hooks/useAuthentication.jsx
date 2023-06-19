@@ -19,7 +19,7 @@ export const useAuthentication = () => {
   // memory leak
   const [cancelled, setCancelled] = useState(false)
 
-  const auth = getAuth();
+  const auth = getAuth()
 
   function checkIfIsCancelled() {
     if (cancelled) {
@@ -37,11 +37,11 @@ export const useAuthentication = () => {
         auth,
         data.email,
         data.password
-      );
+      )
 
       await updateProfile(user, {
         displayName: data.displayName,
-      });
+      })
 
       setLoading(false)
 
@@ -65,13 +65,13 @@ export const useAuthentication = () => {
     }
 
     
-  };
+  }
 
   const logout = () => {
     checkIfIsCancelled()
 
     signOut(auth)
-  };
+  }
 
   const login = async (data) => {
     checkIfIsCancelled()
@@ -86,7 +86,7 @@ export const useAuthentication = () => {
       console.log(typeof error.message)
       console.log(error.message.includes("user-not"))
 
-      let systemErrorMessage;
+      let systemErrorMessage
 
       if (error.message.includes("user-not-found")) {
         systemErrorMessage = "Usuário não encontrado."
@@ -108,7 +108,7 @@ export const useAuthentication = () => {
 
   useEffect(() => {
     return () => setCancelled(true)
-  }, []);
+  }, [])
 
   return {
     auth,
@@ -117,5 +117,5 @@ export const useAuthentication = () => {
     logout,
     login,
     loading,
-  };
-};
+  }
+}

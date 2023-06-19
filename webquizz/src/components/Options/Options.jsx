@@ -1,18 +1,16 @@
 import { useContext } from "react"
 import { QuizzContext } from "../../context/QuizzContext"
+import   './Options.css'
 
-//import './Options.css'
-
-export const Options = ({ option, selectOption, answer }) => {
+export const Options = ({ opcoes, selectOption, resposta }) => {
     const [quizzState, dispatch] = useContext(QuizzContext);
 
     return (
         <div className={`option 
-            ${quizzState.answerSelected && option === answer ? 'correct' : ''}
-            ${quizzState.answerSelected && option !== answer ? 'wrong' : ''}`}
+            ${quizzState.answerSelected && opcoes === resposta ? 'correct' : ''}
+            ${quizzState.answerSelected && opcoes !== resposta ? 'wrong' : ''}`}
             onClick={() => selectOption()}>
-            {option}
+            {opcoes}
         </div>
     )
 }
-

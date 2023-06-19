@@ -24,7 +24,7 @@ import { Finish } from './components/Finish/Finish'
 //hooks
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthentication } from './hooks/useAuthentication'
-import {useLoadUser} from './hooks/useLoadUser'
+import { useLoadUser } from './hooks/useLoadUser'
 import { useContext, useEffect } from 'react'
 
 //context

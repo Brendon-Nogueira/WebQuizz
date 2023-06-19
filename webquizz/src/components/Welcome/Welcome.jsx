@@ -3,26 +3,23 @@ import styles from '../Welcome/Welcome.module.css'
 //hooks 
 import { useContext } from 'react'
 import { QuizzContext } from '../../context/QuizzContext'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
+export const Welcome = () => {
 
- export const Welcome = () => {
-
- const [quizzState, dispatch] = useContext(QuizzContext)
-
- //console.log(quizzState)
-
+  const [quizzState, dispatch] = useContext(QuizzContext)
+  const nav = useNavigate()
+  
   return (
-    <div className={styles.Welcome}>
-        <h2>WebQuizz</h2>
-        <p>Clique para começar!!</p>
+    <div className={styles.welcome}>
+      <h2>WebQuizz</h2>
+      <p>Clique para começar!!</p>
 
-        <button className={styles.btn_play} onClick={() => {
-          dispatch({type: "CHANGE_STATE"}) 
-          
-          }} >Jogar</button>
+      <button className={styles.btn_play} onClick={() => {
+        dispatch({ type: "CHANGE_STATE" })
+        nav("/questions")
+      }} >Jogar</button>
     </div>
   )
 }
-

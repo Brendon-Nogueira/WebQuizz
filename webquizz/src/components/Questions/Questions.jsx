@@ -1,41 +1,52 @@
-import { useContext } from "react";
-import { QuizzContext } from "../../context/QuizzContext";
-import { Options } from '../Options/Options'
-
+import { useContext } from "react"
+import { QuizzContext } from "../../context/QuizzContext"
+import { Options } from "../Options/Options"
+import { useNavigate } from "react-router-dom"
+import  styles from "../Questions/Questions.module.css"
 
 export const Questions = () => {
-    const [quizzState, dispatch] = useContext(QuizzContext);
-    const currentQuest = quizzState.questions[quizzState.currentQuest]
+  const [quizzState, dispatch] = useContext(QuizzContext);
+  const currentQuest = quizzState.questions[quizzState.currentQuest]
+  const navigate = useNavigate()
+ 
+ //aaaaaaaa
+  
+  const onSelectOption = (opcoes) => {
+    dispatch({
+      type: "CHECK_ANSWER",
+      payload: {
+        resposta: currentQuest.resposta,
+        opcoes,
+      },
+    })
+  }
 
-    const onSelectOption = (option) => {
-        dispatch({
-            type: "CHECK_ANSWER",
-            payload: {
-                answer: currentQuest.answer,
-                option
+  return (
+    <div className={styles.question}>
+      <p>Pergunta de {quizzState.currentQuest + 1} a {quizzState.questions.length}</p>
+      <h2>{currentQuest.pergunta}</h2>
+      <div className={styles.container}>
+        {currentQuest.opcoes.map((opt) => (
+          <Options
+            opcoes={opt}
+            key={opt}
+            resposta={currentQuest.resposta}
+            selectOption={() => onSelectOption(opt)}
+          />
+        ))}
+      </div>
+      {quizzState.answerSelected && (
+        <button
+          onClick={() => {
+            dispatch({ type: "CHANGE_QUESTION" })
+            if (quizzState.currentQuest + 1 === quizzState.questions.length) {
+              navigate("/finish")
             }
-        })
-    }
-
-    return (
-        <div id="question">
-            <p>Pergunta de {quizzState.currentQuestion + 1} a {quizzState.questions.length}</p>
-            <h2>{currentQuest.question}</h2>
-            <div id="options-container">
-                {currentQuest.options.map((option) => (
-                    <Options
-                        option={option}
-                        key={option}
-                        answer={currentQuest.answer}
-                        selectOption={() => onSelectOption(option)}
-                    />))}
-            </div>
-            {quizzState.answerSelected && (
-                <button onClick={() => dispatch({ type: "CHANGE_QUESTION" })}>
-                    Continuar
-                </button>
-            )}
-
-        </div>
-    )
+          }}
+        >
+          Continuar
+        </button>
+      )}
+    </div>
+  )
 }

@@ -1,0 +1,29 @@
+.option {
+    background-color: rgba(9, 27, 8, 0.933);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.4s;
+}
+
+.option:hover {
+    background-color: rgba(31, 66, 29, 0.933);
+    opacity: 13;
+}
+
+.container .option p {
+    margin-bottom: 0;
+}
+
+.correct {
+    background-color: rgb(38, 148, 34);
+    color: black;
+    font-weight: bold;
+}
+
+.wrong {
+    background-color: red;
+    font-weight: bold;
+}
