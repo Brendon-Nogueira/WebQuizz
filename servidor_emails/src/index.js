@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const nodemailer = require('nodemailer')
 
-const port = 3001
+
 
 app.get('/', (req, res) =>{
     console.log('Hello world')
@@ -37,8 +37,8 @@ app.get('/send-email', (req, res) => {
     })
 
 })
-
-app.listen(port , () => console(`Running on port  ${port}`))
+const port = 3001
+app.listen(port, () => console.log(`Server up on port: http://localhost:${port}`))
 
 
 
