@@ -1,15 +1,19 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { QuizzContext } from "../../context/QuizzContext"
 import { Options } from "../Options/Options"
 import { useNavigate } from "react-router-dom"
+import { fetchQuestions } from "../../data/questions"
 import  styles from "../Questions/Questions.module.css"
 
 export const Questions = () => {
   const [quizzState, dispatch] = useContext(QuizzContext);
   const currentQuest = quizzState.questions[quizzState.currentQuest]
   const navigate = useNavigate()
- 
- //aaaaaaaa
+  
+  
+  useEffect(() =>{
+    fetchQuestions()
+  },[])
   
   const onSelectOption = (opcoes) => {
     dispatch({
