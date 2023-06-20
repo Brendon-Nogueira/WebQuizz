@@ -10,7 +10,7 @@ export const PostDetail = ({ post }) => {
       <h2>{post.title}</h2>
       <p className={styles.createdby}>por: {post.createdBy}</p>
       <div className={styles.tags}>
-        {post.tags.map((tag) => (
+        {post.tagsArray.map((tag) => (
           <p key={tag}>
             <span>#</span>
             {tag}
@@ -23,4 +23,3 @@ export const PostDetail = ({ post }) => {
     </div>
   )
 }
-
