@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useFetchDocument } from '../../hooks/useFetchDocumet'
+import { useFetchDocument } from '../../hooks/useFetchDocument'
 import styles from '../PostView/Postview.module.css'
 
  export const PostView = () => {
