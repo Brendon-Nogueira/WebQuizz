@@ -67,6 +67,7 @@ function App() {
               <Route path="/posts/:id" element={<PostView />}/>
               <Route path="/posts/create" element={user ? <CreatePost/> : <Navigate to="/login" />}/>
               <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to="/login" />} />
+              <Route path="/myposts" element={user ? <Profile/> : <Navigate to="/login" />} />
               <Route path="/welcome" element={user ? <Welcome/> : <Navigate to="/login" />} />
               <Route path="/questions" element={user ? <Questions/> : <Navigate to="/login" />}/>
               <Route path="/finish" element={user ? <Finish/> : <Navigate to="/login" />} />
