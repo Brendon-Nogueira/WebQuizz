@@ -22,17 +22,17 @@ import { useAuthValue } from '../../context/AuthContext'
     e.preventDefault()
     setFormError('')
 
-    // validação
+  
     try {
       new URL(image)
     } catch (error) {
       setFormError("A imagem precisa ser uma URL.")
     }
 
-    // cria as tags 
+     
     const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase())
 
-    // verifica os valores
+   
     if (!title || !image || !tags || !body) {
       setFormError("Por favor, preencha todos os campos!")
     }
@@ -59,9 +59,9 @@ import { useAuthValue } from '../../context/AuthContext'
       createdBy: user.displayName,
     });
 
-    // redirecionar
+  
     navigate("/")
-  };
+  }
 
   return (
     <div className={styles.posts}>
@@ -100,6 +100,6 @@ import { useAuthValue } from '../../context/AuthContext'
         )}
       </form>
     </div>
-  );
-};
+  )
+}
 

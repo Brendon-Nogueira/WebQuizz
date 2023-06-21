@@ -13,6 +13,8 @@ import { Register } from './pages/Register/Register'
 import { CreatePost } from './pages/CreatePost/CreatePost'
 import { Dashboard } from './pages/Dashboard/Dashboard'
 import { Search } from './pages/Search/Search'
+import { Edit } from './pages/Edit/Edit'
+
 
 // components for aplication
 import { Navbar } from './components/Navbar/Navbar'
@@ -21,6 +23,9 @@ import { Welcome } from './components/Welcome/Welcome'
 import { Questions} from './components/Questions/Questions'
 import { Finish } from './components/Finish/Finish'
 import { PostView } from './components/PostView/PostView'
+import { Profile } from './pages/MyPosts/Profile'
+
+
 
 //hooks
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
@@ -32,6 +37,7 @@ import { useContext, useEffect } from 'react'
 import { AuthProvider } from './context/AuthContext'
 
 import { QuizzContext } from './context/QuizzContext'
+
 
 
 
