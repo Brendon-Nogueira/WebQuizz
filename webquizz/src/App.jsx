@@ -20,6 +20,7 @@ import {Footer} from './components/Footer/Footer'
 import { Welcome } from './components/Welcome/Welcome'
 import { Questions} from './components/Questions/Questions'
 import { Finish } from './components/Finish/Finish'
+import { PostView } from './components/PostView/PostView'
 
 //hooks
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
@@ -31,6 +32,7 @@ import { useContext, useEffect } from 'react'
 import { AuthProvider } from './context/AuthContext'
 
 import { QuizzContext } from './context/QuizzContext'
+
 
 
 
@@ -62,6 +64,7 @@ function App() {
               <Route path="/register" element= {!user ? <Register /> : <Navigate to="/" />} />
               <Route path="/about" element={<About />}/>
               <Route path="/search" element={<Search />}/>
+              <Route path="/posts/:id" element={<PostView />}/>
               <Route path="/posts/create" element={user ? <CreatePost/> : <Navigate to="/login" />}/>
               <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to="/login" />} />
               <Route path="/welcome" element={user ? <Welcome/> : <Navigate to="/login" />} />
