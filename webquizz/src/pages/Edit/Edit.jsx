@@ -24,9 +24,9 @@ import { useAuthValue } from "../../context/AuthContext"
  
   useEffect(() => {
     if (post) {
-      setTitle(post.title);
-      setImage(post.image);
-      setBody(post.body);
+      setTitle(post.title)
+      setImage(post.image)
+      setBody(post.body)
 
       const formatTags = post.tags.join(', ' )
 
