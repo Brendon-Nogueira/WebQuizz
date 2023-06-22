@@ -19,7 +19,7 @@ export const Questions = () => {
     })
   }
 
-  //aaaaaaaa
+  //aaaaaaaaaa
   return (
     <div id="question">
       <p>Pergunta de {quizzState.currentQuest + 1} a {quizzState.questions.length}</p>

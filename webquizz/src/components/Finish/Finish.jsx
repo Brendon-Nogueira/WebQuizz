@@ -1,18 +1,17 @@
-import { useContext } from "react";
+import { useContext } from "react"
 import { QuizzContext } from "../../context/QuizzContext"
 import { useNavigate } from 'react-router-dom'
-
-import styles from  '../Finish/Finish.module.css'
+import "./Finish.css";
 
 export const Finish = () => {
-  const [quizzState, dispatch] = useContext(QuizzContext)
-  const navigate = useNavigate()
+  const [quizState, dispatch] = useContext(QuizzContext);
+  const navigate = useNavigate();
 
   return (
-    <div className={styles.finish-container}>
-      <p className={styles.score}>Pontuação: {quizzState.score}/{quizzState.questions.length}</p>
+    <div className="finish-container">
+      <p className="score">Pontuação: {quizState.score}/{quizState.questions.length}</p>
       <button
-        className={styles.menu-button}
+        className="menu-button"
         onClick={() => {
           dispatch({ type: "MENU" })
           navigate("/posts/create")
