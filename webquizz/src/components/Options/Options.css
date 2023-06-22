@@ -1,15 +1,15 @@
 .option {
-    background-color: rgba(9, 27, 8, 0.933);
-    border-radius: 0.5rem;
+    background-color: #663399;
+    border-radius: 1rem;
     padding: 1rem;
     margin-bottom: 1rem;
     cursor: pointer;
-    opacity: 0.8;
+    opacity: 0.5;
     transition: 0.4s;
 }
 
 .option:hover {
-    background-color: rgba(31, 66, 29, 0.933);
+    background-color: rgba(20, 6, 148, 0.933);
     opacity: 13;
 }
 

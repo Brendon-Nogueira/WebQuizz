@@ -1,12 +1,13 @@
-//data
-import {questions} from '../data/questions'
+
+import { questions } from '../data/questions'
+
 // hooks
-import { createContext, useReducer} from "react"
+import { createContext, useReducer } from "react"
 
 
 export const QuizzContext = createContext()
 
-const states = [ 'Start', 'Playing', 'End']
+const states = ['Start', 'Playing', 'End']
 
 const init = {
     gameState: states[0],
@@ -16,9 +17,9 @@ const init = {
     answerSelected: false
 }
 
-const quizzReducer = (state, action) =>{
-
+const quizzReducer = (state, action) => {
     switch (action.type) {
+
         case "CHANGE_STATE":
             return {
                 ...state,
@@ -40,7 +41,7 @@ const quizzReducer = (state, action) =>{
 
             if (!questions[nextQuestion]) {
                 endGame = true
-            }
+            } 
 
             return {
                 ...state,
@@ -50,13 +51,13 @@ const quizzReducer = (state, action) =>{
             }
 
         case "CHECK_ANSWER":
-            if(state.answerSelected) return state
+            if (state.answerSelected) return state
 
-            const answer = action.payload.answer
-            const option = action.payload.option
+            const answer = action.payload.resposta
+            const option = action.payload.opcoes
             let correctAnswer = 0
 
-            if(answer === option) {correctAnswer = 1}
+            if (answer === option) { correctAnswer = 1 }
 
             return {
                 ...state,
@@ -66,7 +67,7 @@ const quizzReducer = (state, action) =>{
 
 
         case "MENU":
-            return initialState
+            return init
 
         default:
             return state;
@@ -74,8 +75,7 @@ const quizzReducer = (state, action) =>{
 }
 
 
-export const QuizzProvider = ({children}) =>{
+export const QuizzProvider = ({ children }) => {
     const value = useReducer(quizzReducer, init)
     return <QuizzContext.Provider value={value}>{children}</QuizzContext.Provider>
 }
-

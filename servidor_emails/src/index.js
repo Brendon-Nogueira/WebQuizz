@@ -22,7 +22,7 @@ app.get('/send-email', (req, res) => {
 
     transport.sendMail({
         from : 'Contato Web Quizz <contatowebquizz@gmail.com>',
-        to: 'eduardofariacaetano100@gmail.com, contatowebquizz@gmail.com',
+        to: 'eduardofariacaetano100@gmail.com, contatowebquizz@gmail.com, efcs.devs@gmail.com',
         replyTo: 'contatowebquizz@gmail.com',
         subject: 'Seja bem vindo ao Web Quizz!',
         html: ' <h1>Web Quiz</h1> <p>Olá,</p><p>Seja bem-vindo(a) ao Web Quiz! Estamos felizes em tê-lo(a) como parte da nossa comunidade. Esperamos que você se divirta respondendo aos quizzes e aprenda bastante.</p> <p>Qualquer dúvida ou sugestão, não hesite em entrar em contato conosco.</p> <p>Divirta-se!</p>',
